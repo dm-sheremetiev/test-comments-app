@@ -46,7 +46,7 @@ export const CommentsList: React.FC<TProps> = ({
       {loading && (
         <div
           className={classNames("mt-[20px]", {
-            "absolute bottom-[100px] right-[100px]": comments.length > 0,
+            "fixed bottom-[100px] right-[100px]": comments.length > 0,
           })}
         >
           <Lottie options={defaultOptions} height={50} width={50} />
