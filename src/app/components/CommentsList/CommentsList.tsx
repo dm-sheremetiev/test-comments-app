@@ -18,12 +18,16 @@ type TProps = {
   loading: boolean;
   comments: IComment[];
   handleLoadMore: () => void;
+  deletingCommentId: number;
+  handleDeleteComment: (commentId: number) => void;
 };
 
 export const CommentsList: React.FC<TProps> = ({
   loading,
   comments,
   handleLoadMore,
+  deletingCommentId,
+  handleDeleteComment,
 }) => {
   const isListVisible = useMemo(
     () => (loading && comments.length === 0 ? false : true),
@@ -39,7 +43,12 @@ export const CommentsList: React.FC<TProps> = ({
       <ul className="list-none flex flex-col gap-[20px]">
         {isListVisible &&
           comments.map((comment) => (
-            <CommentItem comment={comment} key={comment.id} />
+            <CommentItem
+              comment={comment}
+              key={comment.id}
+              deletingCommentId={deletingCommentId}
+              handleDeleteComment={handleDeleteComment}
+            />
           ))}
       </ul>
 

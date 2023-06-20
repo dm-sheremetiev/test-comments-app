@@ -34,3 +34,15 @@ export const postComment = async (text: string) => {
 
   return response;
 };
+
+// DELETE
+export const deleteComment = async (commentId: number) => {
+  const response: IComment = await fetch(
+    `https://dummyjson.com/comments/${commentId}`,
+    {
+      method: "DELETE",
+    }
+  ).then((res) => res.json());
+
+  return response;
+};
